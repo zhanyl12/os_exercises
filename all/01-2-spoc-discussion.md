@@ -8,6 +8,24 @@
 - [x]  
 
 >  
+操作系统的共性功能是微处理器的管理功能，内存管理功能，外部设备管理功能，文件
+管理功能和进程管理功能，这五个功能简称为操作系统的五大功能，可以认为是操作系统的
+共性。
+windows：用户界面比较友好，上手比较快，但是不开源，收费……
+linux：模块化比较好，源代码开源，使用命令行操作，安全可靠性号
+freeBSD：高性能，高可靠性，是真正的32位操作系统，任务分配高效
+android：不受开放商限制，开放性非常高，拥有很多的开发者
+ios：界面华丽，应用很多，数据安全性强
+参考资料：wenku.baidu.com/link?url=TQYCt8-r81NppULlIwc0Mtl42uXhN80DwP9qtv1-
+
+pXVr9PKRPi7UeGyFXUPQ_SndONJI7G4frUl12__XqnbB3dQD_2RqLdgCaZxEYAvDJse
+http://www.cnblogs.com/sunsonbaby/archive/2004/08/26/36671.html
+http://www.apk3.com/androidnews/html/1184.html
+http://wenku.baidu.com/link?
+
+url=QFxnQRjncUpFe5Pbki14FsF44520l7YJlbUDK6tm50i4fyPg5P5AxXD30ByJ9CXUyNq8iBrKW5Pt
+
+7L8oFkA7m8X4U5MIoRq95T6NHcb4_gq
 
 请总结你认为操作系统应该具有的特征有什么？并对其特征进行简要阐述。
 - [x]  
