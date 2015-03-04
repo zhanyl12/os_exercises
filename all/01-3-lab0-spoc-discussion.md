@@ -104,12 +104,27 @@ SETGATE(intr, 0,1,2,3);
 请问执行上述指令后， intr的值是多少？
 - [x]  
 
-> 42311
+> 65538
+首先在mmh文件当中include头文件stdint.h，随后使用c语言编写代码
+#include "mmu.h"
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+	struct gatedesc intr;
+	intr.gd_off_15_0=0x0008;
+	intr.gd_off_31_16=0x0000;
+	SETGATE(intr, 0,1,2,3);
+	printf("%ld",*((long*)&intr));
+	return 0;
+}
+注意把后16位置为8，前面置为0，直接进行操作。
 
 请分析 [list.h](https://github.com/chyyuu/ucore_lab/blob/master/labcodes/lab2/libs/list.h)内容中大致的含义，并能include这个文件，利用其结构和功能编写一个数据结构链表操作的小C程序
 - [x]  
 
 > 可以看出这个List.h的文件中实质上是定义了一个链表结构，这个结构体里面定义了指针头和尾部，在结构体的基础上定义了各种基于这个结构体的操作，比如有：init构建初始化，add，add_before,add_after增加元素，del删除元素，prev，next返回上一个和下一个元素，empty清空操作等。
+小c程序请见丁延卓和陈刚同学answer，在课下我们进行了分工，我负责上一题目。
 
 ---
 
