@@ -107,8 +107,8 @@ SETGATE(intr, 0,1,2,3);
 > 65538
 首先在mmh文件当中include头文件stdint.h，随后使用c语言编写代码
 #include "mmu.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include<stdlib.h>
+#include<stdio.h>
 int main()
 {
 	struct gatedesc intr;
