@@ -30,7 +30,33 @@ socket控制：涉及多线程
 
  
  1. 以ucore lab8的answer为例，uCore的系统调用有哪些？大致的功能分类有哪些？(w2l1)
- 
+> 我们打开lab8_answer里面的kern中的syscall系统调用文件里面的.c文件，里面的第161行到182行完整地记录了这个文件当中使用的系统调用，大约有22个，比如有SYS_exit，SYS_fork等，大致功能分类有如下几个方面：
+文件操作：里面有pgdir，getdirentry等操作
+进程调度：kill，wait，exec等操作
+内存管理：read，write读写内存等操作
+lab8中的完整版的系统调用如下：
+[SYS_exit]              sys_exit,
+    [SYS_fork]              sys_fork,
+    [SYS_wait]              sys_wait,
+    [SYS_exec]              sys_exec,
+    [SYS_yield]             sys_yield,
+    [SYS_kill]              sys_kill,
+    [SYS_getpid]            sys_getpid,
+    [SYS_putc]              sys_putc,
+    [SYS_pgdir]             sys_pgdir,
+    [SYS_gettime]           sys_gettime,
+    [SYS_lab6_set_priority] sys_lab6_set_priority,
+    [SYS_sleep]             sys_sleep,
+    [SYS_open]              sys_open,
+    [SYS_close]             sys_close,
+    [SYS_read]              sys_read,
+    [SYS_write]             sys_write,
+    [SYS_seek]              sys_seek,
+    [SYS_fstat]             sys_fstat,
+    [SYS_fsync]             sys_fsync,
+    [SYS_getcwd]            sys_getcwd,
+    [SYS_getdirentry]       sys_getdirentry,
+    [SYS_dup]               sys_dup,
  ```
   + 采分点：说明了ucore的大致数量（二十几个），说明了ucore系统调用的主要分类（文件操作，进程管理，内存管理等）
   - 答案没有涉及上述两个要点；（0分）
@@ -54,7 +80,6 @@ socket控制：涉及多线程
  
  1. 通过调试[lab1_ex1](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex1.md)了解Linux应用的系统调用执行过程。(w2l1)
  
-
  ```
   + 采分点：说明了strace的大致用途，说明了系统调用的具体执行过程（包括应用，CPU硬件，操作系统的执行过程）
   - 答案没有涉及上述两个要点；（0分）
