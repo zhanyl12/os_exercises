@@ -30,6 +30,7 @@ socket控制：涉及多线程
 
  
  1. 以ucore lab8的answer为例，uCore的系统调用有哪些？大致的功能分类有哪些？(w2l1)
+
 > 我们打开lab8_answer里面的kern中的syscall系统调用文件里面的.c文件，里面的第161行到182行完整地记录了这个文件当中使用的系统调用，大约有22个，比如有SYS_exit，SYS_fork等，大致功能分类有如下几个方面：
 文件操作：里面有pgdir，getdirentry等操作
 进程调度：kill，wait，exec等操作
