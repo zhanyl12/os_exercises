@@ -67,7 +67,7 @@ lab8中的完整版的系统调用如下：
  
 ## 3.4 linux系统调用分析
  1. 通过分析[lab1_ex0](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex0.md)了解Linux应用的系统调用编写和含义。(w2l1)
- 
+> 本题必须要在linux的环境下面进行编写，windows会因为缺少必要的函数库而无法编译通过 
 
  ```
   + 采分点：说明了objdump，nm，file的大致用途，说明了系统调用的具体含义
@@ -92,6 +92,29 @@ lab8中的完整版的系统调用如下：
  1. ucore的系统调用中参数传递代码分析。
  1. ucore的系统调用中返回结果的传递代码分析。
  1. 以ucore lab8的answer为例，分析ucore 应用的系统调用编写和含义。
+> 以下我们分析lab8的answer当中的kern文件当中的syscall文件中.c文件的几个系统调用的意义
+sys_exit:引发一个系统退出的异常
+sys_fork:为当前进程创造一个子进程
+sys_wait：一个进程进行等待
+sys_exec：这是可执行文件的映射的建立和读取
+sys_yield：调用一个处理调用的内核函数
+sys_kill：用于挂断一个进程
+sys_getpid：用来返回当前进程的id
+sys_putc：有关tcpip协议
+sys_pgdir：显示页面的目录
+sys_gettime：获得当前时间
+sys_lab6_set_priority：调整lab6的优先级权限
+sys_sleep：休眠状态
+sys_open：打开文件
+sys_close：关闭文件
+sys_read：读取文件
+sys_write：写文件
+sys_seek：返回当前文件当下的读写位置
+sys_fstat：和read，write类似
+sys_fsync：将缓存区域的数据写入指定的设备
+sys_getcwd：获取当前的工作目录
+sys_getdirentry：获取文件对话框目录
+sys_dup：用来“复制”一个打开的文件号，使两个文件号都指向同一个文件
  1. 以ucore lab8的answer为例，尝试修改并运行代码，分析ucore应用的系统调用执行过程。
  
 ## 3.6 请分析函数调用和系统调用的区别
