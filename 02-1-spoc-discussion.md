@@ -71,7 +71,18 @@ lab8中的完整版的系统调用如下：
 ## 3.4 linux系统调用分析
  1. 通过分析[lab1_ex0](https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-ex0.md)了解Linux应用的系统调用编写和含义。(w2l1)
 
-> 本题必须要在linux的环境下面进行编写，windows会因为缺少必要的函数库而无法编译通过 
+> 本题必须要在linux的环境下面进行编写，windows会因为缺少必要的函数库而无法编译通过
+objdump命令是Linux下的反汇编目标文件或者可执行文件的命令，objdump -f test显示test文件头信息，objdump -d test反汇编test文件当中执行指令的部分，objdump -D test反汇编test文件当中所有部分，objdump -f test显示test文件的section header信息，objdump -s test显示test的全部header信息以及对应的16进制文件。
+nm 命令显示关于指定 File 中符号的信息，文件可以是对象文件、可执行文件或对象文件库。如果文件没有包含符号信息，nm 命令报告该情况，但不把它解释为出错条件。 nm 命令缺省情况下报告十进制符号表示法下的数字值。
+file 是检测文件类型的命令。file 命令的简单用法就是：file 文件名,例如：file data.txt data.txt: ASCII text
+就告诉我们,data.txt 是一个text （即txt) 类型的文件。
+txt 文件所采用的编码是ascii编码体系。
+所以 text 是文件类型；ASCII是编码体系。（from百度知道）
+以下我们结合.s的文件当中的代码去看其中涉及的系统调用，movl	$SYS_write,%eax
+	movl	$STDOUT,%ebx
+	movl	$hello,%ecx
+	movl	$12,%edx
+	int	$0x80 其中涉及的系统调用时write写操作，首先程序将eax，ebx，ecx，edx四个寄存器存储上对应的参数，随后代码int $0x80启动了系统调用，程序运行时命令行输出hello world。
 
  ```
   + 采分点：说明了objdump，nm，file的大致用途，说明了系统调用的具体含义
