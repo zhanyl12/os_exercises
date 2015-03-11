@@ -100,7 +100,7 @@ sys_fstat(uint32_t arg[]) {
 如何修改lab1, 实现在出现除零错误异常时显示一个字符串的异常服务例程的lab1？
 - [x]  
 
-> 
+> 我们在lab1的error.h当中可以找到各种类型的错误，我们在error.h的文件当中声明一个新的类型错误，用于单独处理除零错误异常，随后我们可以在trap当中去处理这个问题，给出一个除零错的相应输出显示信息，如果除法运算的除数为0，那么我们执行这个软中断，在异常时就会显示一个字符串作为异常服务例程。
 
 
 在lab1/bin目录下，通过`objcopy -O binary kernel kernel.bin`可以把elf格式的ucore kernel转变成体积更小巧的binary格式的ucore kernel。为此，需要如何修改lab1的bootloader, 能够实现正确加载binar格式的ucore OS？ (hard)
