@@ -35,23 +35,23 @@ NOTICE
 #include<string.h>  
 #include<cstring>  
 
-using namespace std;
-struct empty
-{
-	int start;
-	int size;
-	int end;
-}my_free[10000],temp;
-
-struct busy
-{
-	int start;
-	int size;
-	int end;
-	string s;//记录进程名称 
-}full[10000];
-int free_number=1;
-int full_number=0;
+using namespace std;  
+struct empty  
+{  
+	int start;  
+	int size;  
+	int end;  
+}my_free[10000],temp;  
+  
+struct busy  
+{  
+	int start;  
+	int size;  
+	int end;  
+	string s;//记录进程名称   
+}full[10000];  
+int free_number=1;  
+int full_number=0;  
 
 void init()
 {
