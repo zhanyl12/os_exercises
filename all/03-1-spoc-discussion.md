@@ -30,10 +30,10 @@ NOTICE
 
 --- 
 > 学号2012011388 实现最优匹配算法，测试用例已经在代码中写入，使用c++语言进行编写。
-#include<iostream>
-#include<stdio.h>
-#include<string.h>
-#include<cstring>
+#include<iostream>  
+#include<stdio.h>  
+#include<string.h>  
+#include<cstring>  
 
 using namespace std;
 struct empty
