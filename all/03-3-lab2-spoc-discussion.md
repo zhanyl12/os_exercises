@@ -78,9 +78,9 @@ trapframe at 0x7b54
   flag 0x00000002 IOPL=0
 kernel panic at kern/trap/trap.c:253:
     unexpected trap in kernel.
-
 Welcome to the kernel debug monitor!!
-Type 'help' for a list of commands.
+Type 'help' for a list of commands.  
+对应的中断名称是磁盘控制器中断--软磁盘
 
 
 （3）对于lab2的输出信息，请说明数字的含义
