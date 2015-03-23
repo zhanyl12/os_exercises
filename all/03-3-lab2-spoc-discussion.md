@@ -96,7 +96,7 @@ e820map:
 修改lab2，让其显示` type="some string"` 让人能够读懂，而不是不好理解的数字1,2  (easy) 
 - [x]  
 
-> 
+> 在pmm.c当中的page_init函数中，我们可以知道这些信息其实是有这个函数负责输出的，这个type是map对应的type，在memlayout.h的文件当中的map的结构体当中我们找到map的type当中对应的，知道这个type究竟是否是有效的
 
 （4）(spoc)有一台只有页机制的简化80386的32bit计算机，有地址范围位0~256MB的物理内存空间（physical memory），可表示大小为256MB，范围为0xC0000000~0xD0000000的虚拟地址空间（virtual address space）,页大小（page size）为4KB，采用二级页表，一个页目录项（page directory entry ，PDE）大小为4B,一个页表项（page-table entries PTEs）大小为4B，1个页目录表大小为4KB，1个页表大小为4KB。
 ```
@@ -135,7 +135,63 @@ va 0xcd82c07c, pa 0x0c20907c, pde_idx 0x00000336, pde_ctx  0x00037003, pte_idx 0
 
 - [x]  
 
-> 
+> #include <stdio.h>
+#include <stdlib.h>
+unsigned int  mem[128][32];
+int char2int(char a){
+	return (a>58)?(a-87):(a-48);
+}
+int value(char* a,int start){
+	int i=0,sum=0;
+	for(;i<8;i++){
+		sum*=16;
+		sum+=char2int(a[start+i]);
+	}
+	return sum;
+}
+void catch(int value){
+	//printf("%d %d\n",value>>10,mem[17][value>>10]);
+	if(mem[17][value>>10]/128==0){
+		printf("	--> pde index:0x%x  pde contents:(valid 0, pfn 0x%x)\n",value>>10,mem[17][value>>10]%128);
+      		printf("		--> Fault (page directory entry not valid)\n");
+	}else{
+		printf("	--> pde index:0x%x  pde contents:(valid 1, pfn 0x%x)\n",value>>10,mem[17][value>>10]%128);
+		if(mem[mem[17][value>>10]%128][(value>>5)%32]/128==0){
+			printf("		--> pte index:0x%x  pte contents:(valid 0, pfn 0x%x)\n",(value>>5)%32,mem[mem[17][value>>10]%128][(value>>5)%32]%128);
+			printf("			--> Fault (page table entry not valid)\n");
+		}else{
+			printf("		--> pte index:0x%x  pte contents:(valid 1, pfn 0x%x)\n",(value>>5)%32,mem[mem[17][value>>10]%128][(value>>5)%32]%128);
+			int address=value%32+(mem[mem[17][value>>10]%128][(value>>5)%32]%128)*32;
+			//printf("%d\n",address);
+			printf("			 --> Translates to Physical Address 0x%x --> Value: 0x%x\n",address,mem[address/32][address%32]);
+		}
+	}
+}
+int main(){
+	FILE *fp=fopen("data.txt","rt");
+	int index=0;
+	char a[1024];
+	int offset = 9;
+	unsigned int page=0x00;
+	int data1=0,data2=0;
+	int pde_idx=0,pde_ctx,pte_idx,pte_ctx;
+	while(!feof(fp)){
+		fgets(a,1000,fp);
+		for(;i<32;i++){
+			//mem[index][i]=value2(a,offset+3*i);
+			data1=value(a,5);
+			data2=value(a,20);
+			printf("%d %d \n",data1,data2);	
+			pde_idx=data1>>22;
+			pde_ctx=((data1>>22-0x300)+1)<<12+3;
+			pte_idx=(data1>>22-0x300+1);
+			pte_ctx=(data2>>12)
+		}
+		index++;
+	};
+	return 0;
+}
+
 
 ---
 
