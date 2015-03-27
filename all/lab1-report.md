@@ -165,12 +165,11 @@ Breakpoint 2, 0x00007c00 in ?? ()
 ###练习三
 
 想要分析bootloader如何从实模式进入保护模式，我们实际上结合bootasm.s的代码进行分析即可知道答案，下面我们细致地分析bootasm的代码，在分析过程当中回答gitbook上面的问题：
-#include <asm.h>
-
-# Start the CPU: switch to 32-bit protected mode, jump into C.
-# The BIOS loads this code from the first sector of the hard disk into
-# memory at physical address 0x7c00 and starts executing in real mode
-# with %cs=0 %ip=7c00.
+include <asm.h>
+Start the CPU: switch to 32-bit protected mode, jump into C.
+The BIOS loads this code from the first sector of the hard disk into
+memory at physical address 0x7c00 and starts executing in real mode
+with %cs=0 %ip=7c00.
 
 .set PROT_MODE_CSEG,        0x8                     # kernel code segment selector
 .set PROT_MODE_DSEG,        0x10                    # kernel data segment selector
@@ -178,7 +177,7 @@ Breakpoint 2, 0x00007c00 in ?? ()
 以上一段是代码的头文件以及代码的标志和注释
 
 
-# start address should be 0:7c00, in real mode, the beginning address of the running bootloader
+start address should be 0:7c00, in real mode, the beginning address of the running bootloader
 真正的起始地址应当是0x7c00，这是bootloader开始运行的地址
 .globl start
 start:
