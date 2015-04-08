@@ -313,9 +313,10 @@ class scheduler:
                 if clock_tick in self.io_finish_times[pid]:
                     # if IO finished, the should do something for related process
        	            #YOUR CODE
-					self.proc_info[pid][PROC_STATE]=STATE_READY
-					self.next_proc()
-					io_done=True
+                    self.proc_info[pid][PROC_STATE]=STATE_READY
+                    io_done = True
+                    if io_done and self.proc_info[self.curr_proc][PROC_STATE] != STATE_RUNNING:
+                        self.next_proc()
             
             # if current proc is RUNNING and has an instruction, execute it
             instruction_to_execute = ''
