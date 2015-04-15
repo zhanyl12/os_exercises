@@ -60,6 +60,8 @@ tf和context中的esp
 
 > 注意 理解对kstack, trapframe, context等的初始化
 
+> kstack在第一个进程建立的时候使用bootstack进行初始化，而当使用do_fork函数进行其他进程创建的时候在setup_kstack使用page相关的page2kva函数进行初始化，通过返回值看初始化是否成功；在alloc函数当中，初始的进程的trapframe为空，之后在copythread当中对于eax，esp，eflags进行了赋值eax为0，esp赋值为当前esp，一旦出现了中断就把现场保存进去；context在alloc的时候memset为0，也是在copy_thread当中对于context当中的eip和esp进行赋值。
+
 
 当前进程中唯一，操作系统的整个生命周期不唯一，在get_pid中会循环使用pid，耗尽会等待
 
