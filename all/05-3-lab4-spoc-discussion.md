@@ -54,6 +54,8 @@ tf和context中的esp
 
 > 注意 state、pid、cr3，context，trapframe的含义
 
+> 进程的创建对应了proc_init函数，在proc_init函数当中调用alloc_proc函数，首先在alloc当中进行一次分配，如果分配成功就对于pid，state等赋值为-1或者是不能建立，让os比较容易发现这个进程创建失败还是成功。如果alloc成功就在proc_init当中进行对于变量的初始化，state表示这个进程所处的状态，把state赋值为runnable，意思为可运行（可能是正在运行的）。将pid赋值为0，是整个os的第一个进程，在这第一个进程当中创造两个线程。cr3是页表起始页地址，在alloc_proc当中有boot_cr3进行赋值，context在涉及proc_run以及proc之间的switch的时候才会涉及，trapframe是中断的保存的堆栈，当一旦中断出现的时候就把需要保存的现场保存到这个trapframe当中去。
+
 ### 练习2：分析并描述新创建的内核线程是如何分配资源的
 
 > 注意 理解对kstack, trapframe, context等的初始化
