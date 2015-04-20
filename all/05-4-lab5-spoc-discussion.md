@@ -69,3 +69,276 @@ https://github.com/chyyuu/ucore_lab/blob/master/related_info/lab1/lab1-boot-with
 能够把个人思考题和上述知识点中的内容展示出来：即在ucore运行过程中通过`cprintf`函数来完整地展现出来进程A相关的动态执行和内部数据/状态变化的细节。(约全面细致约好)
 
 请完成如下练习，完成代码填写，并形成spoc练习报告
+
+> 运行新的用户进程spin，对于系统调用进行输出，跟踪特权级切换以及状态切换，输出结果如下
+```
+proc's stack is exchanging!
+proc's page is exchanging
+alloced !
+wake up a process!
+successful user_main
+the process 0 is now waiting
+proc's stack is exchanging!
+proc's page is exchanging
+kernel_execve: pid = 2, name = "spin".
+exe a process!
+has changed to user mode!
+level power has changed to kernel!
+Ilevel power has changed to kernel!
+ level power has changed to kernel!
+alevel power has changed to kernel!
+mlevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+plevel power has changed to kernel!
+alevel power has changed to kernel!
+rlevel power has changed to kernel!
+elevel power has changed to kernel!
+nlevel power has changed to kernel!
+tlevel power has changed to kernel!
+.level power has changed to kernel!
+ level power has changed to kernel!
+Flevel power has changed to kernel!
+olevel power has changed to kernel!
+rlevel power has changed to kernel!
+klevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+glevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+clevel power has changed to kernel!
+hlevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+dlevel power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+
+level power has changed to kernel!
+alloced !
+wake up a process!
+level power has changed to kernel!
+Ilevel power has changed to kernel!
+ level power has changed to kernel!
+alevel power has changed to kernel!
+mlevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+plevel power has changed to kernel!
+alevel power has changed to kernel!
+rlevel power has changed to kernel!
+elevel power has changed to kernel!
+nlevel power has changed to kernel!
+tlevel power has changed to kernel!
+.level power has changed to kernel!
+ level power has changed to kernel!
+Rlevel power has changed to kernel!
+ulevel power has changed to kernel!
+nlevel power has changed to kernel!
+nlevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+glevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+clevel power has changed to kernel!
+hlevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+dlevel power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+
+level power has changed to kernel!
+level power has changed to kernel!
+proc's stack is exchanging!
+proc's page is exchanging
+Ilevel power has changed to kernel!
+ level power has changed to kernel!
+alevel power has changed to kernel!
+mlevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+clevel power has changed to kernel!
+hlevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+dlevel power has changed to kernel!
+.level power has changed to kernel!
+ level power has changed to kernel!
+slevel power has changed to kernel!
+plevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+nlevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+glevel power has changed to kernel!
+ level power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+
+level power has changed to kernel!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+level power has changed to kernel!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+level power has changed to kernel!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+Ilevel power has changed to kernel!
+ level power has changed to kernel!
+alevel power has changed to kernel!
+mlevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+plevel power has changed to kernel!
+alevel power has changed to kernel!
+rlevel power has changed to kernel!
+elevel power has changed to kernel!
+nlevel power has changed to kernel!
+tlevel power has changed to kernel!
+.level power has changed to kernel!
+ level power has changed to kernel!
+ level power has changed to kernel!
+Klevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+llevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+glevel power has changed to kernel!
+ level power has changed to kernel!
+tlevel power has changed to kernel!
+hlevel power has changed to kernel!
+elevel power has changed to kernel!
+ level power has changed to kernel!
+clevel power has changed to kernel!
+hlevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+dlevel power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+.level power has changed to kernel!
+
+level power has changed to kernel!
+kill the process 3
+level power has changed to kernel!
+klevel power has changed to kernel!
+ilevel power has changed to kernel!
+llevel power has changed to kernel!
+llevel power has changed to kernel!
+ level power has changed to kernel!
+rlevel power has changed to kernel!
+elevel power has changed to kernel!
+tlevel power has changed to kernel!
+ulevel power has changed to kernel!
+rlevel power has changed to kernel!
+nlevel power has changed to kernel!
+slevel power has changed to kernel!
+ level power has changed to kernel!
+0level power has changed to kernel!
+
+level power has changed to kernel!
+the process 3 is now waiting
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+wake up a process!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+level power has changed to kernel!
+wlevel power has changed to kernel!
+alevel power has changed to kernel!
+ilevel power has changed to kernel!
+tlevel power has changed to kernel!
+ level power has changed to kernel!
+rlevel power has changed to kernel!
+elevel power has changed to kernel!
+tlevel power has changed to kernel!
+ulevel power has changed to kernel!
+rlevel power has changed to kernel!
+nlevel power has changed to kernel!
+slevel power has changed to kernel!
+ level power has changed to kernel!
+0level power has changed to kernel!
+
+level power has changed to kernel!
+slevel power has changed to kernel!
+plevel power has changed to kernel!
+ilevel power has changed to kernel!
+nlevel power has changed to kernel!
+ level power has changed to kernel!
+mlevel power has changed to kernel!
+alevel power has changed to kernel!
+ylevel power has changed to kernel!
+ level power has changed to kernel!
+plevel power has changed to kernel!
+alevel power has changed to kernel!
+slevel power has changed to kernel!
+slevel power has changed to kernel!
+.level power has changed to kernel!
+
+level power has changed to kernel!
+wake up a process!
+proc's stack is exchanging!
+proc's page is exchanging
+proc's context is exchanging!
+proc_exchange!
+scheduling has finished!
+scheduling has finished!
+the process 0 is now waiting
+all user-mode processes have quit.
+init check memory pass.
+kernel panic at kern/process/proc.c:459:
+    initproc exit.
+
+```
