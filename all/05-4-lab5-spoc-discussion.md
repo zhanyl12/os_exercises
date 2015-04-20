@@ -121,7 +121,6 @@ dlevel power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
-
 level power has changed to kernel!
 alloced !
 wake up a process!
@@ -163,7 +162,6 @@ dlevel power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
-
 level power has changed to kernel!
 level power has changed to kernel!
 proc's stack is exchanging!
@@ -196,7 +194,6 @@ glevel power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
-
 level power has changed to kernel!
 proc's stack is exchanging!
 proc's page is exchanging
@@ -263,7 +260,6 @@ dlevel power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
 .level power has changed to kernel!
-
 level power has changed to kernel!
 kill the process 3
 level power has changed to kernel!
@@ -281,7 +277,6 @@ nlevel power has changed to kernel!
 slevel power has changed to kernel!
  level power has changed to kernel!
 0level power has changed to kernel!
-
 level power has changed to kernel!
 the process 3 is now waiting
 proc's stack is exchanging!
@@ -310,7 +305,6 @@ nlevel power has changed to kernel!
 slevel power has changed to kernel!
  level power has changed to kernel!
 0level power has changed to kernel!
-
 level power has changed to kernel!
 slevel power has changed to kernel!
 plevel power has changed to kernel!
@@ -326,7 +320,6 @@ alevel power has changed to kernel!
 slevel power has changed to kernel!
 slevel power has changed to kernel!
 .level power has changed to kernel!
-
 level power has changed to kernel!
 wake up a process!
 proc's stack is exchanging!
