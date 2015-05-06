@@ -3,48 +3,127 @@
 > 信号量问题
 
 ```
-from threading import Thread, Condition
-import time
-import random
+#include <stdio.h>
+#include <windows.h>
+
+
+#define BUFFER_SIZE 10
+int buffer[BUFFER_SIZE];
+
+unsigned int    in = 0;
+unsigned int    out = 0;
+typedef int Semaphore;
+Semaphore   full = 0;
+Semaphore   empty = BUFFER_SIZE;
+Semaphore   mutex = 1;
+#define PRODUCER    0
+#define CONSUMER    1
  
-queue = []
-MAX_NUM = 10
-condition = Condition()
+//记录型信号量的wait操作
+void waitS(int type, Semaphore *s)
+{
+    //等待不成功则输出信息，然后主动堵塞
+    while (*s == 0)
+    {
+        if (type == PRODUCER)
+        {
+            printf("Producer is waiting for record semaphore......\n\n");
+        }
+        else if (type == CONSUMER)
+        {
+            printf("Consumer is waiting for record semaphore......\n\n");
+        }
+        //没有实现block原语，用Sleep函数吧
+        Sleep(1);
+    }
  
-class ProducerThread(Thread):
-    def run(self):
-        nums = range(3)
-        global queue
-        while True:
-            condition.acquire()
-            if len(queue) == MAX_NUM:
-                print "well full, xiaoheshang is waiting"
-                condition.wait()
-                print "Space in well,xiaoheshang can add water"
-            num = random.choice(nums)
-            queue.append(num)
-            print "Add", num
-            condition.notify()
-            condition.release()
-            time.sleep(random.random())
+    //等待成功则执行这条语句
+    (*s)--;
+}
+void waitM(int type, Semaphore *s)
+{
+    if (*s == 1)
+    {
+        (*s) = 0;
+    }
+    else
+    {
+        if (type == PRODUCER)
+        {
+            printf("Producer is waiting for mutex......\n\n");
+        }
+        else if (type == CONSUMER)
+        {
+            printf("Consumer is waiting for mutex......\n\n");
+        }
+        Sleep(1);
+    }
+}
+void signalS(Semaphore *s)
+{
+    (*s)++;
+}
  
-class ConsumerThread(Thread):
-    def run(self):
-        global queue
-        while True:
-            condition.acquire()
-            if not queue:
-                print "Nothing in well, laoheshang is waiting"
-                condition.wait()
-                print "xiaoheshang added something to the well"
-            num = queue.pop(0)
-            print "Drink", num
-            condition.notify()
-            condition.release()
-            time.sleep(random.random())
+//互斥型信号量的signal操作
+void signalM(Semaphore *s)
+{
+    *s = 1;
+}
+
+int __stdcall producer(LPVOID lpThreadParameter)
+{
+    int nextp;
+    while(1)
+    {
+        nextp = GetTickCount();
+        printf("Produce an item.\n");
+        waitS(PRODUCER,&empty);
+        waitM(PRODUCER,&mutex);
+        printf("Producer entered critical section.\n");
+        buffer[in] = nextp;
+        in = (++in) % BUFFER_SIZE;
+        printf("After 小和尚 leaves critical section in = %d, out = %d, full = %d, empty = %d.\n",in,out,full+1,empty);
+        signalM(&mutex);
+        signalS(&full);
+        printf("小和尚 left critical section.\n\n");
+    }
+    return 0;
+}
+
+int __stdcall consumer(LPVOID lpThreadParameter)
+{
+    int nextc;
  
-ProducerThread().start()
-ConsumerThread().start()
+    while(1)
+    {
+        waitS(CONSUMER,&full);
+        waitM(CONSUMER,&mutex);
+        printf("Consumer entered critical section.\n");
+        nextc = buffer[out];
+        out = (++out) % BUFFER_SIZE;
+        printf("After 老和尚 leaves critical section in = %d, out = %d, full = %d, empty = %d.\n",in,out,full,empty+1);
+        signalM(&mutex);
+        signalS(&empty);
+        printf("老和尚 left critical section.\n");
+    }
+    return 0;
+}
+ 
+ 
+ 
+int main()
+{
+    HANDLE  hProducer,hConsumer;
+    //标准输出重定向到文件中，以方便查看运行过程
+    freopen("D:\\stdout.txt","w",stdout);
+    hProducer = CreateThread(NULL,0,producer,NULL,0,NULL);
+    hConsumer = CreateThread(NULL,0,consumer,NULL,0,NULL);
+
+    Sleep(500);
+    TerminateThread(hProducer,0);
+    TerminateThread(hConsumer,0);
+    return 0;
+}
 ```
 
 > 条件变量实现
