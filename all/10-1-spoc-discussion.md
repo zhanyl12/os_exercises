@@ -72,7 +72,7 @@ block=24 : seek=40  rotate=260  transfer=30  total=330;
 block=10 : seek=0  rotate=105  transfer=30  total=135;  
 block=11 : seek=0  rotate=0  transfer=30  total=30;  
 block=1 : seek=0  rotate=30  transfer=30  total=60;  
-block=12 : seek=40  rotate=300  transfer=30  total=370;  
+block=12 : seek=40  rotate=260  transfer=30  total=370;  
 block=13 : seek=0  rotate=0  transfer=30  total=30;   
-block=24 : seek=40  rotate=300 transfer=30  total=370; 
+block=24 : seek=40  rotate=260 transfer=30  total=370; 
 ```
